@@ -137,21 +137,23 @@ jobs:
 
         set(path_separator ":")
         if ("${{ runner.os }}" STREQUAL "macOs")
-        execute_process(
-          COMMAND brew install swig python@3.8
-          RESULT_VARIABLE result
-        )
-        if (NOT result EQUAL 0)
-          message(FATAL_ERROR "Bad exit status")
+          execute_process(
+            COMMAND brew install swig python@3.8
+            RESULT_VARIABLE result
+          )
+          if (NOT result EQUAL 0)
+            message(FATAL_ERROR "Bad exit status")
+          endif()
         endif()
 
         if ("${{ runner.os }}" STREQUAL "Linux")
-        execute_process(
-          COMMAND apt install swig python tclsh default-jre build-essential swig google-perftools libgoogle-perftools-dev uuid-dev
-          RESULT_VARIABLE result
-        )
-        if (NOT result EQUAL 0)
-          message(FATAL_ERROR "Bad exit status")
+          execute_process(
+            COMMAND apt install swig python tclsh default-jre build-essential swig google-perftools libgoogle-perftools-dev uuid-dev
+            RESULT_VARIABLE result
+          )
+          if (NOT result EQUAL 0)
+            message(FATAL_ERROR "Bad exit status")
+          endif()
         endif()
 
     - name: Configure
