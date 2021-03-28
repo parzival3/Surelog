@@ -136,7 +136,7 @@ jobs:
         endif()
 
         set(path_separator ":")
-        if ("${{ runner.os }}" STREQUAL "macOs")
+        if ("${{ runner.os }}" STREQUAL "macOS")
           execute_process(
             COMMAND brew install swig python@3.8
             RESULT_VARIABLE result
@@ -148,7 +148,7 @@ jobs:
 
         if ("${{ runner.os }}" STREQUAL "Linux")
           execute_process(
-            COMMAND apt install swig python tclsh default-jre build-essential swig google-perftools libgoogle-perftools-dev uuid-dev
+            COMMAND sudo apt install swig python tclsh default-jre build-essential swig google-perftools libgoogle-perftools-dev uuid-dev
             RESULT_VARIABLE result
           )
           if (NOT result EQUAL 0)
